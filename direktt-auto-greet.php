@@ -1,12 +1,20 @@
 <?php
 
-// Plugin Name: Direktt Auto Greet - Welcome + Out of Office Automated Messages
+/**
+ * Plugin Name: Direktt Auto Greet - Welcome + Out of Office Automated Messages
+ * Description: Direktt Customer Review Direktt Plugin
+ * Version: 1.0.0
+ * Author: Direktt
+ * Author URI: https://direktt.com/
+ * License: GPL2
+ */
 
+// If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-register_activation_hook( __FILE__, 'direktt_auto_greet_activation_check' );
+add_action( 'plugins_loaded', 'direktt_auto_greet_activation_check', -20 );
 
 function direktt_auto_greet_activation_check() {
     if ( ! function_exists( 'is_plugin_active' ) ) {
@@ -16,13 +24,20 @@ function direktt_auto_greet_activation_check() {
     $required_plugin = 'direktt-plugin/direktt.php';
 
     if ( ! is_plugin_active( $required_plugin ) ) {
-        deactivate_plugins( plugin_basename( __FILE__ ) );
+        add_action( 'after_plugin_row_direktt-auto-greet/direktt-auto-greet.php', function ( $plugin_file, $plugin_data, $status ) {
+            $colspan = 3;
+            ?>
+            <tr class="plugin-update-tr">
+                <td colspan="<?php echo esc_attr( $colspan ); ?>" style="box-shadow: none;">
+                    <div style="color: #b32d2e; font-weight: bold;">
+                        <?php echo esc_html__( 'Direktt Auto Greet requires the Direktt WordPress Plugin to be active. Please activate Direktt WordPress Plugin first.', 'direktt-auto-greet' ); ?>
+                    </div>
+                </td>
+            </tr>
+            <?php
+        }, 10, 3);
 
-        wp_die(
-            esc_html__( 'Direktt Welcome + Out of Office plugin requires the Direktt Plugin to be active. Please activate Direktt Plugin first.', 'direktt-auto-greet' ),
-            esc_html__( 'Plugin Activation Error', 'direktt-auto-greet' ),
-            array( 'back_link' => true )
-        );
+        deactivate_plugins( plugin_basename( __FILE__ ) );
     }
 }
 
