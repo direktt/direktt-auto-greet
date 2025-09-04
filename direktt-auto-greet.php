@@ -48,7 +48,7 @@ function setup_settings_pages() {
     Direktt::add_settings_page(
         array(
             "id" => "welcome-message",
-            "label" => esc_html__( 'Welcome Message Settings', 'direktt-auto-greet' ),
+            "label" => esc_html__( 'Auto Greet Settings', 'direktt-auto-greet' ),
             "callback" => 'render_welcome_settings',
             "priority" => 1
         )
@@ -158,6 +158,9 @@ function render_welcome_settings() {
 
             <table class="form-table">
                 <tr>
+                    <th scope="row" style="padding: 0px;"><h2 style="margin: 0px;"><?php echo esc_html__( 'Welcome Settings', 'direktt-auto-greet' ); ?></h2></th>
+                </tr>
+                <tr>
                     <th scope="row"><label for="direktt_welcome_user">New Subscribers</label></th>
                     <td>
                         <input type="checkbox" name="direktt_welcome_user" id="direktt_welcome_user" value="yes" <?php checked( $welcome_user ); ?> />
@@ -197,6 +200,9 @@ function render_welcome_settings() {
                         <p class="description">In message template you can use #title# placeholder for user name</p>
                         <p class="description">and #subscriptionId# placeholder for Subscription ID.</p>
                     </td>
+                </tr>
+                <tr>
+                    <th scope="row" style="padding: 0px;"><h2 style="margin: 0px;"><?php echo esc_html__( 'Out of Office Settings', 'direktt-auto-greet' ); ?></h2></th>
                 </tr>
                 <tr>
                     <th scope="row">Out of Office Auto Responder</th>
