@@ -388,19 +388,23 @@ function out_of_office_auto_responder_shortcode()
         delete_transient('direktt_auto_greet_success_message'); // Clear the message after it's shown
     }
 ?>
-    <form method="post" action="">
-        <?php wp_nonce_field('direktt_auto_greet_save', 'direktt_auto_greet_nonce'); ?>
-        <h2>Out of Office Auto Responder</h2>
-        <div style="margin-bottom: 20px;">
-            <label for="direktt_auto_greet_mode">Select Mode:</label>
-            <select name="direktt_auto_greet_mode" id="direktt_auto_greet_mode">
-                <option value="always" <?php selected($ooo_mode, 'always'); ?>>Always On</option>
-                <option value="non-working-hours" <?php selected($ooo_mode, 'non-working-hours'); ?>>Only During Non-working Hours</option>
-                <option value="off" <?php selected($ooo_mode, 'off'); ?>>Off</option>
-            </select>
-        </div>
+    <div id="direktt-profile-wrapper">
+		<div id="direktt-profile"  class="direktt-auto-greet">
+			<form method="post" action="">
+				<?php wp_nonce_field('direktt_auto_greet_save', 'direktt_auto_greet_nonce'); ?>
+				<h2>Out of Office Auto Responder</h2>
+				<div>
+					<label for="direktt_auto_greet_mode">Select Mode:</label>
+					<select name="direktt_auto_greet_mode" id="direktt_auto_greet_mode">
+						<option value="always" <?php selected($ooo_mode, 'always'); ?>>Always On</option>
+						<option value="non-working-hours" <?php selected($ooo_mode, 'non-working-hours'); ?>>Only During Non-working Hours</option>
+						<option value="off" <?php selected($ooo_mode, 'off'); ?>>Off</option>
+					</select>
+				</div>
 
-        <button type="submit" name="save" class="button button-primary">Save Settings</button>
-    </form>
+				<button type="submit" name="save" class="button button-primary">Save Settings</button>
+			</form>
+		</div>
+	</div>
 <?php
 }
