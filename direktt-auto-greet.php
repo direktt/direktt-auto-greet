@@ -421,7 +421,7 @@ function out_of_office_auto_responder_shortcode() {
 ?>
     <div id="direktt-profile-wrapper">
 		<div id="direktt-profile">
-			<div id="direktt-profile-data"  class="direktt-auto-greet">
+			<div id="direktt-profile-data"  class="direktt-profile-data-auto-greet">
 				<form method="post" action="">
 					<?php wp_nonce_field('direktt_auto_greet_save', 'direktt_auto_greet_nonce'); ?>
 					<h2>Out of Office Auto Responder</h2>
