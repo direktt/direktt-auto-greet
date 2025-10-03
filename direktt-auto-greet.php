@@ -423,16 +423,16 @@ function out_of_office_auto_responder_shortcode() {
     ?>
     <form method="post" action="">
         <?php wp_nonce_field('direktt_auto_greet_save', 'direktt_auto_greet_nonce'); ?>
-        <h2>Out of Office Auto Responder</h2>
+        <h3><?php echo esc_html__( 'Out of Office Auto Responder', 'direktt-auto-greet' ); ?></h3>
         <div>
-            <label for="direktt_auto_greet_mode">Select Mode:</label>
+            <label for="direktt_auto_greet_mode"><?php echo esc_html__( 'Select Mode:', 'direktt-auto-greet' ); ?></label>
             <select name="direktt_auto_greet_mode" id="direktt_auto_greet_mode">
-                <option value="always" <?php selected($ooo_mode, 'always'); ?>>Always On</option>
-                <option value="non-working-hours" <?php selected($ooo_mode, 'non-working-hours'); ?>>Only During Non-working Hours</option>
-                <option value="off" <?php selected($ooo_mode, 'off'); ?>>Off</option>
+                <option value="always" <?php selected($ooo_mode, 'always'); ?>><?php echo esc_html__( 'Always On', 'direktt-auto-greet' ); ?></option>
+                <option value="non-working-hours" <?php selected($ooo_mode, 'non-working-hours'); ?>><?php echo esc_html__( 'Only During Non-working Hours', 'direktt-auto-greet' ); ?></option>
+                <option value="off" <?php selected($ooo_mode, 'off'); ?>><?php echo esc_html__( 'Off', 'direktt-auto-greet' ); ?></option>
             </select>
         </div>
-        <button type="submit" name="save" class="direktt-button button-primary button-large">Save Settings</button>
+        <button type="submit" name="save" class="direktt-button button-primary button-large"><?php echo esc_html__( 'Save Settings', 'direktt-auto-greet' ); ?></button>
     </form>
     <?php
     echo '</div>';
