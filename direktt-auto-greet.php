@@ -406,38 +406,37 @@ function out_of_office_auto_responder_shortcode() {
     if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['direktt_auto_greet_nonce'] ) && wp_verify_nonce( $_POST['direktt_auto_greet_nonce'], 'direktt_auto_greet_save' ) ) {
         if ( isset( $_POST['save'] ) ) {
             update_option( 'direktt_auto_greet_mode', sanitize_text_field( $_POST['direktt_auto_greet_mode'] ) );
-            set_transient( 'direktt_auto_greet_success_message', 'Settings saved successfully.', 30 );
-            wp_safe_redirect( $_SERVER['REQUEST_URI'] );
+            $new_url = add_query_arg( array( 'success_flag' => '1' ), $_SERVER['REQUEST_URI'] );
+            wp_safe_redirect( $new_url );
             exit;
         }
     }
 
     ob_start();
-    echo '<div class="direktt-profile-wrapper">';
-    if ( $message = get_transient( 'direktt_auto_greet_success_message' ) ) {
-        echo '<div class="updated notice is-dismissible"><p>' . esc_html( $message ) . '</p></div>';
-        delete_transient( 'direktt_auto_greet_success_message' ); // Clear the message after it's shown
+    echo '<div id="direktt-profile-wrapper">';
+    echo '<div id="direktt-profile">';
+    echo '<div id="direktt-profile-data" class="direktt-profile-data-auto-greet-tool direktt-service">';
+
+    if ( isset( $_GET['success_flag'] ) && $_GET['success_flag'] === '1' ) {
+        echo '<div class="notice"><p>' . esc_html__( 'Settings saved successfully.', 'direktt-auto-greet' ) . '</p></div>';
     }
-?>
-    <div id="direktt-profile-wrapper">
-		<div id="direktt-profile">
-			<div id="direktt-profile-data"  class="direktt-profile-data-auto-greet">
-				<form method="post" action="">
-					<?php wp_nonce_field('direktt_auto_greet_save', 'direktt_auto_greet_nonce'); ?>
-					<h2>Out of Office Auto Responder</h2>
-					<div>
-						<label for="direktt_auto_greet_mode">Select Mode:</label>
-						<select name="direktt_auto_greet_mode" id="direktt_auto_greet_mode">
-							<option value="always" <?php selected($ooo_mode, 'always'); ?>>Always On</option>
-							<option value="non-working-hours" <?php selected($ooo_mode, 'non-working-hours'); ?>>Only During Non-working Hours</option>
-							<option value="off" <?php selected($ooo_mode, 'off'); ?>>Off</option>
-						</select>
-					</div>
-					<button type="submit" name="save" class="direktt-button button-primary button-large">Save Settings</button>
-				</form>
-			</div>
-		</div>
-	</div>
-<?php
+    ?>
+    <form method="post" action="">
+        <?php wp_nonce_field('direktt_auto_greet_save', 'direktt_auto_greet_nonce'); ?>
+        <h2>Out of Office Auto Responder</h2>
+        <div>
+            <label for="direktt_auto_greet_mode">Select Mode:</label>
+            <select name="direktt_auto_greet_mode" id="direktt_auto_greet_mode">
+                <option value="always" <?php selected($ooo_mode, 'always'); ?>>Always On</option>
+                <option value="non-working-hours" <?php selected($ooo_mode, 'non-working-hours'); ?>>Only During Non-working Hours</option>
+                <option value="off" <?php selected($ooo_mode, 'off'); ?>>Off</option>
+            </select>
+        </div>
+        <button type="submit" name="save" class="direktt-button button-primary button-large">Save Settings</button>
+    </form>
+    <?php
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
     return ob_get_clean();
 }
