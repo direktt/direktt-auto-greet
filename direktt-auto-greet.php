@@ -57,22 +57,22 @@ function direktt_auto_greet_activation_check()
     }
 }
 
-add_action('direktt_setup_settings_pages', 'setup_settings_pages');
+add_action('direktt_setup_settings_pages', 'direktt_auto_greet_setup_settings_pages');
 
-function setup_settings_pages()
+function direktt_auto_greet_setup_settings_pages()
 {
 
     Direktt::add_settings_page(
         array(
             'id'       => 'welcome-message',
             'label'    => esc_html__('Auto Greet Settings', 'direktt-auto-greet'),
-            'callback' => 'render_welcome_settings',
+            'callback' => 'direktt_auto_greet_render_welcome_settings',
             'priority' => 1,
         )
     );
 }
 
-function render_welcome_settings()
+function direktt_auto_greet_render_welcome_settings()
 {
     // Success message flag
     $success = false;
@@ -325,9 +325,9 @@ function render_welcome_settings()
 <?php
 }
 
-add_action('direktt/user/subscribe', 'on_direktt_subscribe_user');
+add_action('direktt/user/subscribe', 'direktt_auto_greet_on_direktt_subscribe_user');
 
-function on_direktt_subscribe_user($direktt_user_id)
+function direktt_auto_greet_on_direktt_subscribe_user($direktt_user_id)
 {
     $user_obj = Direktt_User::get_user_by_subscription_id($direktt_user_id);
 
@@ -361,9 +361,9 @@ function on_direktt_subscribe_user($direktt_user_id)
     }
 }
 
-add_action('direktt/event/chat/message_sent', 'out_off_office_message_sent');
+add_action('direktt/event/chat/message_sent', 'direktt_auto_greet_out_off_office_message_sent');
 
-function out_off_office_message_sent($event)
+function direktt_auto_greet_out_off_office_message_sent($event)
 {
     $subscription_id = $event['direktt_user_id'];
 
@@ -408,9 +408,9 @@ function out_off_office_message_sent($event)
     }
 }
 
-add_shortcode('direktt_auto_greet', 'out_of_office_auto_responder_shortcode');
+add_shortcode('direktt_auto_greet', 'direktt_auto_greet_out_of_office_auto_responder_shortcode');
 
-function out_of_office_auto_responder_shortcode()
+function direktt_auto_greet_out_of_office_auto_responder_shortcode()
 {
     if (! Direktt_User::is_direktt_admin()) {
         return;
