@@ -387,7 +387,7 @@ function direktt_auto_greet_out_off_office_message_sent($event)
 
     if ($ooo_mode === 'non-working-hours') {
         $current_time = current_time('H:i');
-        $current_day  = strtolower(date('l', current_time('timestamp')));
+        $current_day = strtolower(gmdate('l', current_time('timestamp')));
 
         $is_non_working_time = false;
 
