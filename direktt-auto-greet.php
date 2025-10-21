@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: Direktt Auto Greet - Welcome + Out of Office Automated Messages
- * Description: Direktt Customer Review Direktt Plugin
+ * Description: Direktt Auto Greet - Welcome + Out of Office Automated Messages
  * Version: 1.0.0
  * Author: Direktt
  * Author URI: https://direktt.com/
@@ -13,6 +13,22 @@
 if (! defined('ABSPATH')) {
     exit;
 }
+
+$direktt_auto_greet_plugin_version = "1.0.0";
+$direktt_auto_greet_github_update_cache_allowed = true;
+
+require_once plugin_dir_path( __FILE__ ) . 'direktt-github-updater/class-direktt-github-updater.php';
+
+$direktt_auto_greet_plugin_github_updater  = new Direktt_Github_Updater( 
+    $direktt_auto_greet_plugin_version, 
+    'direktt-auto-greet/direktt-auto-greet.php',
+    'https://raw.githubusercontent.com/direktt/direktt-auto-greet/master/info.json',
+    'direktt_auto_greet_github_updater',
+    $direktt_auto_greet_github_update_cache_allowed );
+
+add_filter( 'plugins_api', array( $direktt_auto_greet_plugin_github_updater, 'github_info' ), 20, 3 );
+add_filter( 'site_transient_update_plugins', array( $direktt_auto_greet_plugin_github_updater, 'github_update' ));
+add_filter( 'upgrader_process_complete', array( $direktt_auto_greet_plugin_github_updater, 'purge'), 10, 2 );
 
 add_action('plugins_loaded', 'direktt_auto_greet_activation_check', -20);
 
