@@ -2,8 +2,8 @@
 
 /**
  * Plugin Name: Direktt Auto Greet - Welcome + Out of Office Automated Messages
- * Description: Direktt Customer Review Direktt Plugin
- * Version: 1.0.0
+ * Description: Direktt Auto Greet - Welcome + Out of Office Automated Messages
+ * Version: 1.0.1
  * Author: Direktt
  * Author URI: https://direktt.com/
  * License: GPL2
@@ -13,6 +13,22 @@
 if (! defined('ABSPATH')) {
     exit;
 }
+
+$direktt_auto_greet_plugin_version = "1.0.1";
+$direktt_auto_greet_github_update_cache_allowed = true;
+
+require_once plugin_dir_path( __FILE__ ) . 'direktt-github-updater/class-direktt-github-updater.php';
+
+$direktt_auto_greet_plugin_github_updater  = new Direktt_Github_Updater( 
+    $direktt_auto_greet_plugin_version, 
+    'direktt-auto-greet/direktt-auto-greet.php',
+    'https://raw.githubusercontent.com/direktt/direktt-auto-greet/master/info.json',
+    'direktt_auto_greet_github_updater',
+    $direktt_auto_greet_github_update_cache_allowed );
+
+add_filter( 'plugins_api', array( $direktt_auto_greet_plugin_github_updater, 'github_info' ), 20, 3 );
+add_filter( 'site_transient_update_plugins', array( $direktt_auto_greet_plugin_github_updater, 'github_update' ));
+add_filter( 'upgrader_process_complete', array( $direktt_auto_greet_plugin_github_updater, 'purge'), 10, 2 );
 
 add_action('plugins_loaded', 'direktt_auto_greet_activation_check', -20);
 
@@ -31,7 +47,7 @@ function direktt_auto_greet_activation_check()
         deactivate_plugins(plugin_basename(__FILE__));
 
         // Prevent the “Plugin activated.” notice
-        if (isset($_GET['activate'])) {
+        if (isset($_GET['activate'])) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Justification: not a form processing, just removing a query var.
             unset($_GET['activate']);
         }
 
@@ -79,54 +95,54 @@ function direktt_auto_greet_render_welcome_settings()
 
     // Handle form submission
     if (
-        $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['direktt_admin_welcome_nonce'])
-        && wp_verify_nonce($_POST['direktt_admin_welcome_nonce'], 'direktt_admin_welcome_save')
+        isset( $_SERVER['REQUEST_METHOD'] ) && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['direktt_admin_welcome_nonce'])
+        && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['direktt_admin_welcome_nonce'])), 'direktt_admin_welcome_save')
     ) {
         // Sanitize and update options
         update_option('direktt_welcome_user', isset($_POST['direktt_welcome_user']) ? 'yes' : 'no');
-        update_option('direktt_welcome_user_template', intval($_POST['direktt_welcome_user_template']));
+        update_option('direktt_welcome_user_template', isset($_POST['direktt_welcome_user_template']) ? intval($_POST['direktt_welcome_user_template']) : 0);
         update_option('direktt_welcome_admin', isset($_POST['direktt_welcome_admin']) ? 'yes' : 'no');
-        update_option('direktt_welcome_admin_template', intval($_POST['direktt_welcome_admin_template']));
-        update_option('direktt_auto_greet_mode', sanitize_text_field($_POST['direktt_auto_greet_mode']));
-        update_option('direktt_auto_greet_always_template', intval($_POST['direktt_auto_greet_always_template']));
-        update_option('direktt_auto_greet_non_working_template', intval($_POST['direktt_auto_greet_non_working_template']));
+        update_option('direktt_welcome_admin_template', isset($_POST['direktt_welcome_admin_template']) ? intval($_POST['direktt_welcome_admin_template']) : 0);
+        update_option('direktt_auto_greet_mode', isset($_POST['direktt_auto_greet_mode']) ? sanitize_text_field(wp_unslash($_POST['direktt_auto_greet_mode'])) : '');
+        update_option('direktt_auto_greet_always_template', isset($_POST['direktt_auto_greet_always_template']) ? intval($_POST['direktt_auto_greet_always_template']) : 0);
+        update_option('direktt_auto_greet_non_working_template', isset($_POST['direktt_auto_greet_non_working_template']) ? intval($_POST['direktt_auto_greet_non_working_template']) : 0);
         update_option(
             'direktt_auto_greet_working_hours',
             array(
                 'monday'    => array(
                     'closed' => isset($_POST['monday_closed']) ? true : false,
-                    'start'  => sanitize_text_field($_POST['monday_start']),
-                    'end'    => sanitize_text_field($_POST['monday_end']),
+                    'start'  => isset($_POST['monday_start']) ? sanitize_text_field(wp_unslash($_POST['monday_start'])) : '',
+                    'end'    => isset($_POST['monday_end']) ? sanitize_text_field(wp_unslash($_POST['monday_end'])) : '',
                 ),
                 'tuesday'   => array(
                     'closed' => isset($_POST['tuesday_closed']) ? true : false,
-                    'start'  => sanitize_text_field($_POST['tuesday_start']),
-                    'end'    => sanitize_text_field($_POST['tuesday_end']),
+                    'start'  => isset($_POST['tuesday_start']) ? sanitize_text_field(wp_unslash($_POST['tuesday_start'])) : '',
+                    'end'    => isset($_POST['tuesday_end']) ? sanitize_text_field(wp_unslash($_POST['tuesday_end'])) : '',
                 ),
                 'wednesday' => array(
                     'closed' => isset($_POST['wednesday_closed']) ? true : false,
-                    'start'  => sanitize_text_field($_POST['wednesday_start']),
-                    'end'    => sanitize_text_field($_POST['wednesday_end']),
+                    'start'  => isset($_POST['wednesday_start']) ? sanitize_text_field(wp_unslash($_POST['wednesday_start'])) : '',
+                    'end'    => isset($_POST['wednesday_end']) ? sanitize_text_field(wp_unslash($_POST['wednesday_end'])) : '',
                 ),
                 'thursday'  => array(
                     'closed' => isset($_POST['thursday_closed']) ? true : false,
-                    'start'  => sanitize_text_field($_POST['thursday_start']),
-                    'end'    => sanitize_text_field($_POST['thursday_end']),
+                    'start'  => isset($_POST['thursday_start']) ? sanitize_text_field(wp_unslash($_POST['thursday_start'])) : '',
+                    'end'    => isset($_POST['thursday_end']) ? sanitize_text_field(wp_unslash($_POST['thursday_end'])) : '',
                 ),
                 'friday'    => array(
                     'closed' => isset($_POST['friday_closed']) ? true : false,
-                    'start'  => sanitize_text_field($_POST['friday_start']),
-                    'end'    => sanitize_text_field($_POST['friday_end']),
+                    'start'  => isset($_POST['friday_start']) ? sanitize_text_field(wp_unslash($_POST['friday_start'])) : '',
+                    'end'    => isset($_POST['friday_end']) ? sanitize_text_field(wp_unslash($_POST['friday_end'])) : '',
                 ),
                 'saturday'  => array(
                     'closed' => isset($_POST['saturday_closed']) ? true : false,
-                    'start'  => sanitize_text_field($_POST['saturday_start']),
-                    'end'    => sanitize_text_field($_POST['saturday_end']),
+                    'start'  => isset($_POST['saturday_start']) ? sanitize_text_field(wp_unslash($_POST['saturday_start'])) : '',
+                    'end'    => isset($_POST['saturday_end']) ? sanitize_text_field(wp_unslash($_POST['saturday_end'])) : '',
                 ),
                 'sunday'    => array(
                     'closed' => isset($_POST['sunday_closed']) ? true : false,
-                    'start'  => sanitize_text_field($_POST['sunday_start']),
-                    'end'    => sanitize_text_field($_POST['sunday_end']),
+                    'start'  => isset($_POST['sunday_start']) ? sanitize_text_field(wp_unslash($_POST['sunday_start'])) : '',
+                    'end'    => isset($_POST['sunday_end']) ? sanitize_text_field(wp_unslash($_POST['sunday_end'])) : '',
                 ),
             )
         );
@@ -189,7 +205,7 @@ function direktt_auto_greet_render_welcome_settings()
         'posts_per_page' => -1,
         'orderby'        => 'title',
         'order'          => 'ASC',
-        'meta_query'     => array(
+        'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- - Justification: bounded, cached, selective query on small dataset
             array(
                 'key'     => 'direkttMTType',
                 'value'   => array('all', 'none'),
@@ -387,7 +403,7 @@ function direktt_auto_greet_out_off_office_message_sent($event)
 
     if ($ooo_mode === 'non-working-hours') {
         $current_time = current_time('H:i');
-        $current_day  = strtolower(date('l', current_time('timestamp')));
+        $current_day  = strtolower(gmdate('l', current_time('timestamp')));
 
         $is_non_working_time = false;
 
@@ -419,10 +435,14 @@ function direktt_auto_greet_out_of_office_auto_responder_shortcode()
     // Load stored values
     $ooo_mode = get_option('direktt_auto_greet_mode', 'off');
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['direktt_auto_greet_nonce']) && wp_verify_nonce($_POST['direktt_auto_greet_nonce'], 'direktt_auto_greet_save')) {
+    if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['direktt_auto_greet_nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['direktt_auto_greet_nonce'])), 'direktt_auto_greet_save')) {
         if (isset($_POST['save'])) {
-            update_option('direktt_auto_greet_mode', sanitize_text_field($_POST['direktt_auto_greet_mode']));
-            $new_url = add_query_arg(array('success_flag' => '1'), $_SERVER['REQUEST_URI']);
+            update_option('direktt_auto_greet_mode', isset($_POST['direktt_auto_greet_mode']) ? sanitize_text_field(wp_unslash($_POST['direktt_auto_greet_mode'])) : 'off');
+            if (isset( $_SERVER['REQUEST_URI'])) {
+                $new_url = add_query_arg(array('success_flag' => '1'), esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])));
+            } else {
+                $new_url = home_url();
+            }
             wp_safe_redirect($new_url);
             exit;
         }
