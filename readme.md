@@ -36,7 +36,9 @@ A powerful WordPress plugin for sending automated messages, tightly integrated w
 ### Workflow
 
 - Welcome:
-    - User subscribes to the channel, if "New Subscribers" checkbox is checked and "Subscriber Message Template" is configured, "Subscriber Message Template" message will be sent to that new subscriber. If "Admin" checkbox is checked and "Admin Message Template" is configured, "Admin Message Template" message will be sent to the Admin.
+    - User subscribes to the channel:
+        - If "New Subscribers" checkbox is checked and "Subscriber Message Template" is configured, "Subscriber Message Template" message will be sent to that new subscriber.
+        - If "Admin" checkbox is checked and "Admin Message Template" is configured, "Admin Message Template" message will be sent to the Admin.
 - Out of Office Auto Responder:
     - Off - There won't be Automated Messages (this does not affect Welcome messages).
     - Only During Non-working hours:
