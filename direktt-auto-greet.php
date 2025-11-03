@@ -225,12 +225,8 @@ function direktt_auto_greet_render_welcome_settings()
         <form method="post" action="">
             <?php wp_nonce_field('direktt_admin_welcome_save', 'direktt_admin_welcome_nonce'); ?>
 
-            <table class="form-table">
-                <tr>
-                    <th scope="row" style="padding: 0px;">
-                        <h3 style="margin: 0px;"><?php echo esc_html__('Welcome Settings', 'direktt-auto-greet'); ?></h3>
-                    </th>
-                </tr>
+            <h2 class="title"><?php echo esc_html__('Welcome Settings', 'direktt-auto-greet'); ?></h2>
+			<table class="form-table">
                 <tr>
                     <th scope="row"><label for="direktt_welcome_user"><?php echo esc_html__('New Subscribers', 'direktt-auto-greet'); ?></label></th>
                     <td>
@@ -272,11 +268,9 @@ function direktt_auto_greet_render_welcome_settings()
                         <p class="description"><?php echo esc_html__('and', 'direktt-auto-greet'); ?> <?php echo esc_html('#subscriptionId#'); ?> <?php echo esc_html__('placeholder for Subscription ID.', 'direktt-auto-greet'); ?></p>
                     </td>
                 </tr>
-                <tr>
-                    <th scope="row" style="padding: 0px;">
-                        <h3 style="margin: 0px;"><?php echo esc_html__('Out of Office Settings', 'direktt-auto-greet'); ?></h3>
-                    </th>
-                </tr>
+			</table>
+			 <h2 class="title"><?php echo esc_html__('Out of Office Settings', 'direktt-auto-greet'); ?></h2>
+			<table class="form-table">
                 <tr>
                     <th scope="row"><?php echo esc_html__('Out of Office Auto Responder', 'direktt-auto-greet'); ?></th>
                     <td>
