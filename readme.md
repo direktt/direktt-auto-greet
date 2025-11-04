@@ -25,20 +25,20 @@ A powerful WordPress plugin for sending automated messages, tightly integrated w
 - Find **Direktt > Settings > Auto Greet Settings** in your WordPress admin menu.
 - Configure:
     - Do you want to send Welcome message for new subscribers?
-    - Choose the message template which will be sent to new subscribers.
-    - Do you want to send a message to Admin when new user subscribes?
-    - Choose the message template which will be sent to Admin when new user subscribes.
+    - Choose the notification which will be sent to new subscribers.
+    - Do you want to send a notification to Direktt Admin when new user subscribes?
+    - Choose the notification which will be sent to Direktt Admin when new user subscribes.
     - Set up Out of Office Auto Responder mode (Off/Only During Non-working hours/Always on)
     - Set up your working hours.
-    - Choose the message template which will be sent to user for Auto Reponder Always on mode.
-    - Choose the message template which will be sent to user for Auto Reponder Non-working hours mode.
+    - Choose the notification which will be sent to user for Auto Reponder Always on mode.
+    - Choose the notification which will be sent to user for Auto Reponder Non-working hours mode.
 
 ### Workflow
 
 - Welcome:
     - User subscribes to the channel:
         - If "New Subscribers" checkbox is checked and "Subscriber Message Template" is configured, "Subscriber Message Template" message will be sent to that new subscriber.
-        - If "Admin" checkbox is checked and "Admin Message Template" is configured, "Admin Message Template" message will be sent to the Admin.
+        - If "Admin" checkbox is checked and "Admin Message Template" is configured, "Admin Message Template" message will be sent to the Direktt Admin.
 - Out of Office Auto Responder:
     - Off - There won't be Automated Messages (this does not affect Welcome messages).
     - Only During Non-working hours:
@@ -50,7 +50,7 @@ A powerful WordPress plugin for sending automated messages, tightly integrated w
 
 ### Admin Shortcode (Front End)
 
-Intended only for Admin (no other user can see it), with this Shortcode Admin can change the current Out of Office Auto Responder mode.
+Intended only for Direktt Admin (no other user can see it), with this Shortcode Direktt Admin can change the current Out of Office Auto Responder mode:
 
 ```[direktt_auto_greet]```
 
