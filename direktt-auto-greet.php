@@ -244,7 +244,7 @@ function direktt_auto_greet_render_welcome_settings()
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <p class="description"><?php echo esc_html__('In message template you can use', 'direktt-auto-greet'); ?> <?php echo esc_html('#title#'); ?> <?php echo esc_html__('placeholder for user name.', 'direktt-auto-greet'); ?></p>
+                        <p class="description"><?php echo esc_html__('In message template you can use', 'direktt-auto-greet'); ?> <?php echo esc_html('#display_name#'); ?> <?php echo esc_html__('placeholder for user name.', 'direktt-auto-greet'); ?></p>
                     </td>
                 </tr>
                 <tr>
@@ -264,8 +264,8 @@ function direktt_auto_greet_render_welcome_settings()
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <p class="description"><?php echo esc_html__('In message template you can use', 'direktt-auto-greet'); ?> <?php echo esc_html('#title#'); ?> <?php echo esc_html__('placeholder for user name.', 'direktt-auto-greet'); ?></p>
-                        <p class="description"><?php echo esc_html__('and', 'direktt-auto-greet'); ?> <?php echo esc_html('#subscriptionId#'); ?> <?php echo esc_html__('placeholder for Subscription ID.', 'direktt-auto-greet'); ?></p>
+                        <p class="description"><?php echo esc_html__('In message template you can use', 'direktt-auto-greet'); ?> <?php echo esc_html('#display_name#'); ?> <?php echo esc_html__('placeholder for user name.', 'direktt-auto-greet'); ?></p>
+                        <p class="description"><?php echo esc_html__('and', 'direktt-auto-greet'); ?> <?php echo esc_html('#subscription_id#'); ?> <?php echo esc_html__('placeholder for Subscription ID.', 'direktt-auto-greet'); ?></p>
                     </td>
                 </tr>
 			</table>
@@ -354,7 +354,7 @@ function direktt_auto_greet_on_direktt_subscribe_user($direktt_user_id)
             array($direktt_user_id),
             $welcome_user_template,
             array(
-                'title' => $user_title,
+                'display_name' => $user_title,
             )
         );
     }
@@ -364,8 +364,8 @@ function direktt_auto_greet_on_direktt_subscribe_user($direktt_user_id)
         Direktt_Message::send_message_template_to_admin(
             $welcome_admin_template,
             array(
-                'title'          => $user_title,
-                'subscriptionId' => strval($direktt_user_id),
+                'display_name'   => $user_title,
+                'subscription_id' => strval($direktt_user_id),
             )
         );
     }

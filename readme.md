@@ -50,7 +50,7 @@ A powerful WordPress plugin for sending automated messages, tightly integrated w
 
 ### Admin Shortcode (Front End)
 
-Intended only for Direktt Admin (no other user can see it), with this Shortcode Direktt Admin can change the current Out of Office Auto Responder mode:
+Intended only for Direktt Admin (no other user can see it), with this Shortcode Direktt Admin can change the current Out of Office Auto Responder mode.
 
 ```[direktt_auto_greet]```
 
@@ -58,8 +58,8 @@ Intended only for Direktt Admin (no other user can see it), with this Shortcode 
 
 Direktt Message templates support following dynamic placeholders:
 
-- `#title#` — display name of the new subsriber (only for welcome messages)
-- `#subscriptionId#` — subscription id of the new subscriber (only for welcome messages)
+- `#display_name#` — display name of the new subsriber (only for welcome messages)
+- `#subscription_id#` — subscription id of the new subscriber (only for welcome messages)
 
 ## Updating
 
