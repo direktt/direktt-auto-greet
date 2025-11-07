@@ -226,7 +226,7 @@ function direktt_auto_greet_render_welcome_settings()
             <?php wp_nonce_field('direktt_admin_welcome_save', 'direktt_admin_welcome_nonce'); ?>
 
             <h2 class="title"><?php echo esc_html__('Welcome Settings', 'direktt-auto-greet'); ?></h2>
-			<table class="form-table">
+			<table class="form-table direktt-auto-greet-welcome-table">
                 <tr>
                     <th scope="row"><label for="direktt_welcome_user"><?php echo esc_html__('New Subscribers', 'direktt-auto-greet'); ?></label></th>
                     <td>
@@ -270,7 +270,7 @@ function direktt_auto_greet_render_welcome_settings()
                 </tr>
 			</table>
 			 <h2 class="title"><?php echo esc_html__('Out of Office Settings', 'direktt-auto-greet'); ?></h2>
-			<table class="form-table">
+			<table class="form-table direktt-auto-greet-ooo-table">
                 <tr>
                     <th scope="row"><?php echo esc_html__('Out of Office Auto Responder', 'direktt-auto-greet'); ?></th>
                     <td>
