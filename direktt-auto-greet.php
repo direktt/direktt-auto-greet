@@ -233,7 +233,7 @@ function direktt_auto_greet_render_welcome_settings()
                         <input type="checkbox" name="direktt_welcome_user" id="direktt_welcome_user" value="yes" <?php checked($welcome_user); ?> />
                     </td>
                 </tr>
-                <tr>
+                <tr class="direktt-settings-mt-row">
                     <th scope="row"><label for="direktt_welcome_user_template"><?php echo esc_html__('Subscriber Message Template', 'direktt-auto-greet'); ?></label></th>
                     <td>
                         <select name="direktt_welcome_user_template" id="direktt_welcome_user_template">
@@ -253,7 +253,7 @@ function direktt_auto_greet_render_welcome_settings()
                         <input type="checkbox" name="direktt_welcome_admin" id="direktt_welcome_admin" value="yes" <?php checked($welcome_admin); ?> />
                     </td>
                 </tr>
-                <tr>
+                <tr class="direktt-settings-mt-row">
                     <th scope="row"><label for="direktt_welcome_admin_template"><?php echo esc_html__('Admin Message Template', 'direktt-auto-greet'); ?></label></th>
                     <td>
                         <select name="direktt_welcome_admin_template" id="direktt_welcome_admin_template">
