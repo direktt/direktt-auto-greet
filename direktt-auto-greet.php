@@ -226,12 +226,8 @@ function direktt_auto_greet_render_welcome_settings()
             <?php wp_nonce_field('direktt_admin_welcome_save', 'direktt_admin_welcome_nonce'); ?>
 
             <h2 class="title"><?php echo esc_html__('Welcome Settings', 'direktt-auto-greet'); ?></h2>
+            <h3><?php echo esc_html__('Send Message to New Subscribers', 'direktt-auto-greet'); ?></h3>
 			<table class="form-table direktt-auto-greet-welcome-table">
-                <tr id="direktt-auto-greet-settings-subscriber-title">
-                    <td colspan="2">
-                        <h3><?php echo esc_html__('Send Message to New Subscribers', 'direktt-auto-greet'); ?></h3>
-                    </td>
-                </tr>
                 <tr>
                     <th scope="row"><label for="direktt_welcome_user"><?php echo esc_html__('Enable', 'direktt-auto-greet'); ?></label></th>
                     <td>
@@ -253,16 +249,14 @@ function direktt_auto_greet_render_welcome_settings()
                         <p class="description"><?php echo esc_html__('In the message template, you can use the', 'direktt-auto-greet'); ?> <code><?php echo esc_html('#display_name#'); ?></code> <?php echo esc_html__('placeholder for the subscriber\'s name.', 'direktt-auto-greet'); ?></p>
                     </td>
                 </tr>
+			</table>
+            <h3 class="title"><?php echo esc_html__('Send Message to Admin', 'direktt-auto-greet'); ?></h3>
+            <table class="form-table direktt-auto-greet-welcome-table">
                 <tr>
                     <th scope="row"><label for="direktt_welcome_admin"><?php echo esc_html__('Enable', 'direktt-auto-greet'); ?></label></th>
                     <td>
                         <input type="checkbox" name="direktt_welcome_admin" id="direktt_welcome_admin" value="yes" <?php checked($welcome_admin); ?> />
                         <p class="description"><?php echo esc_html__('When enabled, a message is automatically sent to admin after each new subscription.', 'direktt-auto-greet'); ?></p>
-                    </td>
-                </tr>
-                <tr id="direktt-auto-greet-settings-admin-title">
-                    <td colspan="2">
-                        <h3 class="title"><?php echo esc_html__('Send Message to Admin', 'direktt-auto-greet'); ?></h3>
                     </td>
                 </tr>
                 <tr id="direktt-auto-greet-settings-mt-admin-row">
