@@ -227,7 +227,11 @@ function direktt_auto_greet_render_welcome_settings()
 
             <h2 class="title"><?php echo esc_html__('Welcome Settings', 'direktt-auto-greet'); ?></h2>
 			<table class="form-table direktt-auto-greet-welcome-table">
-                <h3 class="title"><?php echo esc_html__('Send Message to New Subscribers', 'direktt-auto-greet'); ?></h2>
+                <tr id="direktt-auto-greet-settings-subscriber-title">
+                    <td colspan="2">
+                        <h3><?php echo esc_html__('Send Message to New Subscribers', 'direktt-auto-greet'); ?></h3>
+                    </td>
+                </tr>
                 <tr>
                     <th scope="row"><label for="direktt_welcome_user"><?php echo esc_html__('Enable', 'direktt-auto-greet'); ?></label></th>
                     <td>
@@ -235,7 +239,7 @@ function direktt_auto_greet_render_welcome_settings()
                         <p class="description"><?php echo esc_html__('When enabled, a welcome message is automatically sent to new subscriber after each subscription.', 'direktt-auto-greet'); ?></p>
                     </td>
                 </tr>
-                <tr id="direktt-settings-mt-new-subscriber-row">
+                <tr id="direktt-auto-greet-settings-mt-new-subscriber-row">
                     <th scope="row"><label for="direktt_welcome_user_template"><?php echo esc_html__('Subscriber Message Template', 'direktt-auto-greet'); ?></label></th>
                     <td>
                         <select name="direktt_welcome_user_template" id="direktt_welcome_user_template">
@@ -256,8 +260,12 @@ function direktt_auto_greet_render_welcome_settings()
                         <p class="description"><?php echo esc_html__('When enabled, a message is automatically sent to admin after each new subscription.', 'direktt-auto-greet'); ?></p>
                     </td>
                 </tr>
-                <h3 class="title"><?php echo esc_html__('Send Message to Admin', 'direktt-auto-greet'); ?></h2>
-                <tr id="direktt-settings-mt-admin-row">
+                <tr id="direktt-auto-greet-settings-admin-title">
+                    <td colspan="2">
+                        <h3 class="title"><?php echo esc_html__('Send Message to Admin', 'direktt-auto-greet'); ?></h3>
+                    </td>
+                </tr>
+                <tr id="direktt-auto-greet-settings-mt-admin-row">
                     <th scope="row"><label for="direktt_welcome_admin_template"><?php echo esc_html__('Admin Message Template', 'direktt-auto-greet'); ?></label></th>
                     <td>
                         <select name="direktt_welcome_admin_template" id="direktt_welcome_admin_template">
@@ -286,7 +294,7 @@ function direktt_auto_greet_render_welcome_settings()
                         <p class="description"><?php echo esc_html__('Set the Out of Office auto responder mode.', 'direktt-auto-greet'); ?></p>
                     </td>
                 </tr>
-                <tr id="direktt-settings-mt-always-on-row">
+                <tr id="direktt-auto-greet-settings-mt-always-on-row">
                     <th scope="row"><?php echo esc_html__('Always on mode message template', 'direktt-auto-greet'); ?></th>
                     <td>
                         <select name="direktt_auto_greet_always_template" id="direktt_auto_greet_always_template">
@@ -318,7 +326,7 @@ function direktt_auto_greet_render_welcome_settings()
                         <p class="description"><?php echo esc_html__('Define working hours for each day. If a day is marked as closed, the auto responder will be active all day.', 'direktt-auto-greet'); ?></p>
                     </td>
                 </tr>
-                <tr id="direktt-settings-mt-nwh-row">
+                <tr id="direktt-auto-greet-settings-mt-nwh-row">
                     <th scope="row"><?php echo esc_html__('Non-working hours mode message template', 'direktt-auto-greet'); ?></th>
                     <td>
                         <select name="direktt_auto_greet_non_working_template" id="direktt_auto_greet_non_working_template">
