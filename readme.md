@@ -48,7 +48,7 @@ With Direktt Auto Greet you can:
         - Example - Subscriber sends a message at Sunday, Sunday is configured as closed. "Non-working hours mode message template" message will be sent to user.  
         - Example - Subscriber sends a message at Monday, 2:00 PM, Working hours for Monday are 9:00 AM - 5:00 PM. Nothing will be sent to user.  
     - **Always on**:
-        - Example - You go on holiday and set Out of Office Auto Responder mode to Always On. Subscriber sends a message to you, and they will get the automated "Non-working hours mode message template" message.
+        - Example - You go on holiday and set Out of Office Auto Responder mode to Always On. Subscriber sends a message to you, and they will get the automated "Always on mode message template" message.
 
 ### Admin Shortcode (Front End)
 
