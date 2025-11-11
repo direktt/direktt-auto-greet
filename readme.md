@@ -12,6 +12,11 @@ With Direktt Auto Greet you can:
 - **Send customizable notifications** to users and channel admins when new user subscribes to the channel.
 - **Send customizable notifications** to users if you are out off office at current time.
 
+## Documentation
+
+You can find the detailed plugin documentation, guides and tutorials in the Wiki section:  
+https://github.com/direktt/direktt-auto-greet/wiki 
+
 ## Requirements
 
 - WordPress 5.6 or higher
@@ -84,9 +89,6 @@ GPL-2.0-or-later
 ---
 
 ## Support
-
-You can find the detailed plugin documentation in the Wiki section:  
-https://github.com/direktt/direktt-auto-greet/wiki  
 
 Please use Issues section of this repository for any issue you might have:  
 https://github.com/direktt/direktt-auto-greet/issues.  
