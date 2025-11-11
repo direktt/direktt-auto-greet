@@ -19,7 +19,7 @@ $direktt_auto_greet_github_update_cache_allowed = true;
 
 require_once plugin_dir_path( __FILE__ ) . 'direktt-github-updater/class-direktt-github-updater.php';
 
-$direktt_auto_greet_plugin_github_updater  = new Direktt_Github_Updater( 
+$direktt_auto_greet_plugin_github_updater  = new Direktt_Github_Updater(  
     $direktt_auto_greet_plugin_version, 
     'direktt-auto-greet/direktt-auto-greet.php',
     'https://raw.githubusercontent.com/direktt/direktt-auto-greet/master/info.json',
