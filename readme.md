@@ -69,8 +69,6 @@ The plugin supports updating directly from WordPress admin console.
   
 You can find all plugin releases in the Releases section of this repository - https://github.com/direktt/direktt-auto-greet/releases.
 
----
-
 ## License
 
 GPL-2.0-or-later
