@@ -5,7 +5,7 @@ Direktt Auto Greet is a WordPress plugin designed for businesses using the [Dire
 Seamlessly integrated with the Direktt chat-based platform, this extension automatically sends personalized welcome messages to new subscribers and handles out-of-office replies—making your client communication effortless, timely, and always professional.  
 Perfect for busy SMEs looking to streamline conversations and deliver a polished experience with zero hassle.  
   
-It is tightly integrated with the [Direktt WordPress Plugin](https://direktt.com/).  
+It is tightly integrated with the [Direktt WordPress Plugin](https://wordpress.org/plugins/direktt/).  
 
 With Direktt Auto Greet you can:
 
