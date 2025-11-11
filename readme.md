@@ -60,8 +60,8 @@ Intended for Direktt Channel Admins, with this Shortcode Direktt Channel Admin c
 
 Direktt Message templates support following dynamic placeholders:
 
-- `#display_name#` — display name of the new subsriber (only for welcome messages)
-- `#subscription_id#` — subscription id of the new subscriber (only for welcome messages)
+- `#display_name#` — display name of the new subsriber **(only for welcome messages)**
+- `#subscription_id#` — subscription id of the new subscriber **(only for welcome messages)**
 
 ## Updating
 
