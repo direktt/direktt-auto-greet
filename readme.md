@@ -66,6 +66,7 @@ Direktt Message templates support following dynamic placeholders:
 ## Updating
 
 The plugin supports updating directly from WordPress admin console.  
+
 You can find all plugin releases in the Releases section of this repository:  
 https://github.com/direktt/direktt-auto-greet/releases.
 
@@ -79,7 +80,7 @@ GPL-2.0-or-later
 
 ## Support
 
-You can find the detailed plugin documentation in the Wiki section:
+You can find the detailed plugin documentation in the Wiki section:  
 https://github.com/direktt/direktt-auto-greet/wiki  
 
 Please use Issues section of this repository for any issue you might have:  
