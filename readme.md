@@ -9,7 +9,7 @@ With Direktt Auto Greet you can:
 
 ## Requirements
 
-- WordPress 5.0 or higher
+- WordPress 5.6 or higher
 - The [Direktt Plugin](https://wordpress.org/plugins/direktt/) (must be active)
 
 ## Installation
