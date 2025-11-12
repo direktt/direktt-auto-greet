@@ -64,7 +64,7 @@ https://github.com/direktt/direktt-auto-greet/wiki
 
 ```[direktt_auto_greet]```
 
-Intended for Direktt channel admins. It enables Direktt channel admin to manage current Out of Office Auto Responder mode right from Direktt Mobile App.
+Intended for Direktt channel admins. It enables Direktt channel admin to manage current Out of Office Auto Responder mode right from Direktt mobile app.
 
 ## Notification Templates
 
