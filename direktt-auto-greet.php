@@ -229,14 +229,14 @@ function direktt_auto_greet_render_welcome_settings()
             <h3><?php echo esc_html__('Send Message to New Subscribers', 'direktt-auto-greet'); ?></h3>
 			<table class="form-table direktt-auto-greet-welcome-table">
                 <tr>
-                    <th scope="row"><label for="direktt_welcome_user"><?php echo esc_html__('New Subscribers', 'direktt-auto-greet'); ?></label></th>
+                    <th scope="row"><label for="direktt_welcome_user"><?php echo esc_html__('Enable', 'direktt-auto-greet'); ?></label></th>
                     <td>
                         <input type="checkbox" name="direktt_welcome_user" id="direktt_welcome_user" value="yes" <?php checked($welcome_user); ?> />
                         <p class="description"><?php echo esc_html__('When enabled, a welcome message is automatically sent to new subscriber after each subscription.', 'direktt-auto-greet'); ?></p>
                     </td>
                 </tr>
                 <tr id="direktt-auto-greet-settings-mt-new-subscriber-row">
-                    <th scope="row"><label for="direktt_welcome_user_template"><?php echo esc_html__('Subscriber Message Template', 'direktt-auto-greet'); ?></label></th>
+                    <th scope="row"><label for="direktt_welcome_user_template"><?php echo esc_html__('Message Template', 'direktt-auto-greet'); ?></label></th>
                     <td>
                         <select name="direktt_welcome_user_template" id="direktt_welcome_user_template">
                             <option value="0"><?php echo esc_html__('Select Template', 'direktt-auto-greet'); ?></option>
@@ -254,14 +254,14 @@ function direktt_auto_greet_render_welcome_settings()
             <h3 class="title"><?php echo esc_html__('Send Message to Admin', 'direktt-auto-greet'); ?></h3>
             <table class="form-table direktt-auto-greet-welcome-table">
                 <tr>
-                    <th scope="row"><label for="direktt_welcome_admin"><?php echo esc_html__('Admin', 'direktt-auto-greet'); ?></label></th>
+                    <th scope="row"><label for="direktt_welcome_admin"><?php echo esc_html__('Enable', 'direktt-auto-greet'); ?></label></th>
                     <td>
                         <input type="checkbox" name="direktt_welcome_admin" id="direktt_welcome_admin" value="yes" <?php checked($welcome_admin); ?> />
                         <p class="description"><?php echo esc_html__('When enabled, a message is automatically sent to admin after each new subscription.', 'direktt-auto-greet'); ?></p>
                     </td>
                 </tr>
                 <tr id="direktt-auto-greet-settings-mt-admin-row">
-                    <th scope="row"><label for="direktt_welcome_admin_template"><?php echo esc_html__('Admin Message Template', 'direktt-auto-greet'); ?></label></th>
+                    <th scope="row"><label for="direktt_welcome_admin_template"><?php echo esc_html__('Message Template', 'direktt-auto-greet'); ?></label></th>
                     <td>
                         <select name="direktt_welcome_admin_template" id="direktt_welcome_admin_template">
                             <option value="0"><?php echo esc_html__('Select Template', 'direktt-auto-greet'); ?></option>
