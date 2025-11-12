@@ -246,7 +246,8 @@ function direktt_auto_greet_render_welcome_settings()
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <p class="description"><?php echo esc_html__('In the message template, you can use the', 'direktt-auto-greet'); ?> <code><?php echo esc_html('#display_name#'); ?></code> <?php echo esc_html__('placeholder for the subscriber\'s name.', 'direktt-auto-greet'); ?></p>
+                        <p class="description"><?php echo esc_html__('You can use following dynamic placeholders in this template:', 'direktt-auto-greet'); ?></p>
+                        <p class="description"><code><?php echo esc_html('#display_name#'); ?></code> <?php echo esc_html__(' - user display name', 'direktt-auto-greet'); ?></p>
                     </td>
                 </tr>
 			</table>
@@ -270,8 +271,9 @@ function direktt_auto_greet_render_welcome_settings()
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <p class="description"><?php echo esc_html__('In the message template, you can use the', 'direktt-auto-greet'); ?> <code><?php echo esc_html('#display_name#'); ?></code> <?php echo esc_html__('placeholder for the subscriber\'s name', 'direktt-auto-greet'); ?></p>
-                        <p class="description"><?php echo esc_html__('and placeholder', 'direktt-auto-greet'); ?> <code><?php echo esc_html('#subscription_id#'); ?></code> <?php echo esc_html__('for Subscription ID.', 'direktt-auto-greet'); ?></p>
+                        <p class="description"><?php echo esc_html__('You can use following dynamic placeholders in this template:', 'direktt-auto-greet'); ?></p>
+                        <p class="description"><code><?php echo esc_html('#display_name#'); ?></code> <?php echo esc_html__(' - user display name', 'direktt-auto-greet'); ?></p>
+                        <p class="description"><code><?php echo esc_html('#subscription_id#'); ?></code> <?php echo esc_html__(' - user subscription id', 'direktt-auto-greet'); ?></p>
                     </td>
                 </tr>
 			</table>
