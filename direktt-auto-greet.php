@@ -232,11 +232,11 @@ function direktt_auto_greet_render_welcome_settings()
                     <th scope="row"><label for="direktt_welcome_user"><?php echo esc_html__('Enable', 'direktt-auto-greet'); ?></label></th>
                     <td>
                         <input type="checkbox" name="direktt_welcome_user" id="direktt_welcome_user" value="yes" <?php checked($welcome_user); ?> />
-                        <p class="description"><?php echo esc_html__('When enabled, a welcome message is automatically sent to new subscriber after each subscription.', 'direktt-auto-greet'); ?></p>
+                        <label for="direktt_welcome_user" class="description"><?php echo esc_html__('When enabled, a welcome message is automatically sent to new subscriber after each subscription.', 'direktt-auto-greet'); ?></label>
                     </td>
                 </tr>
                 <tr id="direktt-auto-greet-settings-mt-new-subscriber-row">
-                    <th scope="row"><label for="direktt_welcome_user_template"><?php echo esc_html__('Subscriber Message Template', 'direktt-auto-greet'); ?></label></th>
+                    <th scope="row"><label for="direktt_welcome_user_template"><?php echo esc_html__('Message Template', 'direktt-auto-greet'); ?></label></th>
                     <td>
                         <select name="direktt_welcome_user_template" id="direktt_welcome_user_template">
                             <option value="0"><?php echo esc_html__('Select Template', 'direktt-auto-greet'); ?></option>
@@ -246,7 +246,8 @@ function direktt_auto_greet_render_welcome_settings()
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <p class="description"><?php echo esc_html__('In the message template, you can use the', 'direktt-auto-greet'); ?> <code><?php echo esc_html('#display_name#'); ?></code> <?php echo esc_html__('placeholder for the subscriber\'s name.', 'direktt-auto-greet'); ?></p>
+                        <p class="description"><?php echo esc_html__( 'You can use following dynamic placeholders in this template:', 'direktt-auto-greet' ); ?></p>
+                        <p class="description"><code><?php echo esc_html( '#display_name#' ); ?></code><?php echo esc_html__( ' - user\'s display name.', 'direktt-auto-greet' ); ?></p>
                     </td>
                 </tr>
 			</table>
@@ -256,11 +257,11 @@ function direktt_auto_greet_render_welcome_settings()
                     <th scope="row"><label for="direktt_welcome_admin"><?php echo esc_html__('Enable', 'direktt-auto-greet'); ?></label></th>
                     <td>
                         <input type="checkbox" name="direktt_welcome_admin" id="direktt_welcome_admin" value="yes" <?php checked($welcome_admin); ?> />
-                        <p class="description"><?php echo esc_html__('When enabled, a message is automatically sent to admin after each new subscription.', 'direktt-auto-greet'); ?></p>
+                        <label for="direktt_welcome_admin" class="description"><?php echo esc_html__('When enabled, a message is automatically sent to admin after each new subscription.', 'direktt-auto-greet'); ?></label>
                     </td>
                 </tr>
                 <tr id="direktt-auto-greet-settings-mt-admin-row">
-                    <th scope="row"><label for="direktt_welcome_admin_template"><?php echo esc_html__('Admin Message Template', 'direktt-auto-greet'); ?></label></th>
+                    <th scope="row"><label for="direktt_welcome_admin_template"><?php echo esc_html__('Message Template', 'direktt-auto-greet'); ?></label></th>
                     <td>
                         <select name="direktt_welcome_admin_template" id="direktt_welcome_admin_template">
                             <option value="0"><?php echo esc_html__('Select Template', 'direktt-auto-greet'); ?></option>
@@ -270,31 +271,58 @@ function direktt_auto_greet_render_welcome_settings()
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <p class="description"><?php echo esc_html__('In the message template, you can use the', 'direktt-auto-greet'); ?> <code><?php echo esc_html('#display_name#'); ?></code> <?php echo esc_html__('placeholder for the subscriber\'s name', 'direktt-auto-greet'); ?></p>
-                        <p class="description"><?php echo esc_html__('and placeholder', 'direktt-auto-greet'); ?> <code><?php echo esc_html('#subscription_id#'); ?></code> <?php echo esc_html__('for Subscription ID.', 'direktt-auto-greet'); ?></p>
+                        <p class="description"><?php echo esc_html__( 'You can use following dynamic placeholders in this template:', 'direktt-auto-greet' ); ?></p>
+                        <p class="description"><code><?php echo esc_html( '#display_name#' ); ?></code><?php echo esc_html__( ' - user\'s display name.', 'direktt-auto-greet' ); ?></p>
+                        <p class="description"><code><?php echo esc_html( '#subscription_id#' ); ?></code><?php echo esc_html__( ' - user\'s subscription ID.', 'direktt-auto-greet' ); ?></p>
                     </td>
                 </tr>
 			</table>
-			 <h2 class="title"><?php echo esc_html__('Out of Office Settings', 'direktt-auto-greet'); ?></h2>
+			 <h2 class="title"><?php echo esc_html__('Out of Office Auto Responder Settings', 'direktt-auto-greet'); ?></h2>
 			<table class="form-table direktt-auto-greet-ooo-table">
                 <tr>
-                    <th scope="row"><?php echo esc_html__('Out of Office Auto Responder', 'direktt-auto-greet'); ?></th>
+                    <th scope="row"><?php echo esc_html__('Mode', 'direktt-auto-greet'); ?></th>
                     <td>
-                        <select name="direktt_auto_greet_mode" id="direktt_auto_greet_mode">
-                            <option value="always" <?php selected($ooo_mode, 'always'); ?>><?php echo esc_html__('Always On', 'direktt-auto-greet'); ?></option>
-                            <option value="non-working-hours" <?php selected($ooo_mode, 'non-working-hours'); ?>><?php echo esc_html__('Only During Non-working Hours', 'direktt-auto-greet'); ?></option>
-                            <option value="off" <?php selected($ooo_mode, 'off'); ?>><?php echo esc_html__('Off', 'direktt-auto-greet'); ?></option>
-                        </select>
+                        <div>
+                            <label>
+                                <input type="radio" name="direktt_auto_greet_mode" value="always" <?php checked($ooo_mode, 'always'); ?> />
+                                <?php echo esc_html__('Always On', 'direktt-auto-greet'); ?>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="radio" name="direktt_auto_greet_mode" value="non-working-hours" <?php checked($ooo_mode, 'non-working-hours'); ?> />
+                                <?php echo esc_html__('Only During Non-working Hours', 'direktt-auto-greet'); ?>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="radio" name="direktt_auto_greet_mode" value="off" <?php checked($ooo_mode, 'off'); ?> />
+                                <?php echo esc_html__('Off', 'direktt-auto-greet'); ?>
+                            </label>
+                        </div>
                         <p class="description"><?php echo esc_html__('Set the Out of Office auto responder mode.', 'direktt-auto-greet'); ?></p>
                     </td>
                 </tr>
                 <tr id="direktt-auto-greet-settings-mt-always-on-row">
-                    <th scope="row"><?php echo esc_html__('Always on mode message template', 'direktt-auto-greet'); ?></th>
+                    <th scope="row"><?php echo esc_html__('Message Template (Always on)', 'direktt-auto-greet'); ?></th>
                     <td>
                         <select name="direktt_auto_greet_always_template" id="direktt_auto_greet_always_template">
                             <option value="0"><?php echo esc_html__('Select Template', 'direktt-auto-greet'); ?></option>
                             <?php foreach ($template_posts as $post) : ?>
                                 <option value="<?php echo esc_attr($post->ID); ?>" <?php selected($ooo_always_template, $post->ID); ?>>
+                                    <?php echo esc_html($post->post_title); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="direktt-auto-greet-settings-mt-nwh-row">
+                    <th scope="row"><?php echo esc_html__('Message Template (Non-working hours)', 'direktt-auto-greet'); ?></th>
+                    <td>
+                        <select name="direktt_auto_greet_non_working_template" id="direktt_auto_greet_non_working_template">
+                            <option value="0"><?php echo esc_html__('Select Template', 'direktt-auto-greet'); ?></option>
+                            <?php foreach ($template_posts as $post) : ?>
+                                <option value="<?php echo esc_attr($post->ID); ?>" <?php selected($ooo_non_working_template, $post->ID); ?>>
                                     <?php echo esc_html($post->post_title); ?>
                                 </option>
                             <?php endforeach; ?>
@@ -318,19 +346,6 @@ function direktt_auto_greet_render_welcome_settings()
                             </div>
                         <?php endforeach; ?>
                         <p class="description"><?php echo esc_html__('Define working hours for each day. If a day is marked as closed, the auto responder will be active all day.', 'direktt-auto-greet'); ?></p>
-                    </td>
-                </tr>
-                <tr id="direktt-auto-greet-settings-mt-nwh-row">
-                    <th scope="row"><?php echo esc_html__('Non-working hours mode message template', 'direktt-auto-greet'); ?></th>
-                    <td>
-                        <select name="direktt_auto_greet_non_working_template" id="direktt_auto_greet_non_working_template">
-                            <option value="0"><?php echo esc_html__('Select Template', 'direktt-auto-greet'); ?></option>
-                            <?php foreach ($template_posts as $post) : ?>
-                                <option value="<?php echo esc_attr($post->ID); ?>" <?php selected($ooo_non_working_template, $post->ID); ?>>
-                                    <?php echo esc_html($post->post_title); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
                     </td>
                 </tr>
             </table>
