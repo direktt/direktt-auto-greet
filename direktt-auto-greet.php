@@ -283,28 +283,24 @@ function direktt_auto_greet_render_welcome_settings()
                     <th scope="row"><?php echo esc_html__('Mode', 'direktt-auto-greet'); ?></th>
                     <td>
                         <div>
-                            <label>
-                                <input type="radio" name="direktt_auto_greet_mode" value="always" <?php checked($ooo_mode, 'always'); ?> />
-                                <?php echo esc_html__('Always On', 'direktt-auto-greet'); ?>
-                            </label>
-                        </div>
-                        <div>
-                            <label>
-                                <input type="radio" name="direktt_auto_greet_mode" value="non-working-hours" <?php checked($ooo_mode, 'non-working-hours'); ?> />
-                                <?php echo esc_html__('Only During Non-working Hours', 'direktt-auto-greet'); ?>
-                            </label>
-                        </div>
-                        <div>
-                            <label>
-                                <input type="radio" name="direktt_auto_greet_mode" value="off" <?php checked($ooo_mode, 'off'); ?> />
-                                <?php echo esc_html__('Off', 'direktt-auto-greet'); ?>
-                            </label>
+                            <p>
+                                <input type="radio" name="direktt_auto_greet_mode" id="direktt-auto-greet-always" value="always" <?php checked($ooo_mode, 'always'); ?> />
+                                <label for="direktt-auto-greet-always"><?php echo esc_html__('Always On', 'direktt-auto-greet'); ?></label>
+                            </p>
+                            <p>
+                                <input type="radio" name="direktt_auto_greet_mode" id="direktt-auto-greet-nwh" value="non-working-hours" <?php checked($ooo_mode, 'non-working-hours'); ?> />
+                                <label for="direktt-auto-greet-nwh"><?php echo esc_html__('Only During Non-working Hours', 'direktt-auto-greet'); ?></label>
+                            </p>
+                            <p>
+                                <input type="radio" name="direktt_auto_greet_mode" id="direktt-auto-greet-off" value="off" <?php checked($ooo_mode, 'off'); ?> />
+                                <label for="direktt-auto-greet-off"><?php echo esc_html__('Off', 'direktt-auto-greet'); ?></label>
+                            </p>
                         </div>
                         <p class="description"><?php echo esc_html__('Set the Out of Office auto responder mode.', 'direktt-auto-greet'); ?></p>
                     </td>
                 </tr>
                 <tr id="direktt-auto-greet-settings-mt-always-on-row">
-                    <th scope="row"><?php echo esc_html__('Message Template (Always on)', 'direktt-auto-greet'); ?></th>
+                    <th scope="row"><?php echo esc_html__('Message Template', 'direktt-auto-greet'); ?></th>
                     <td>
                         <select name="direktt_auto_greet_always_template" id="direktt_auto_greet_always_template">
                             <option value="0"><?php echo esc_html__('Select Template', 'direktt-auto-greet'); ?></option>
@@ -317,7 +313,7 @@ function direktt_auto_greet_render_welcome_settings()
                     </td>
                 </tr>
                 <tr id="direktt-auto-greet-settings-mt-nwh-row">
-                    <th scope="row"><?php echo esc_html__('Message Template (Non-working hours)', 'direktt-auto-greet'); ?></th>
+                    <th scope="row"><?php echo esc_html__('Message Template', 'direktt-auto-greet'); ?></th>
                     <td>
                         <select name="direktt_auto_greet_non_working_template" id="direktt_auto_greet_non_working_template">
                             <option value="0"><?php echo esc_html__('Select Template', 'direktt-auto-greet'); ?></option>
