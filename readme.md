@@ -48,8 +48,8 @@ https://github.com/direktt/direktt-auto-greet/wiki
 
 - **Welcome**:
     - User subscribes to the channel:
-        - If **"New Subscribers"** checkbox is checked and **"Subscriber Message Template"** is configured, "Subscriber Message Template" message will be sent to that new subscriber.
-        - If **"Admin"** checkbox is checked and **"Admin Message Template"** is configured, "Admin Message Template" message will be sent to the Direktt Admin.
+        - If **"Send Message to New Subscribers"** is enabled and **"Message Template"** is configured, "Message Template" message will be sent to that new subscriber.
+        - If **"Send Message to Admin"** is enabled and **"Message Template"** is configured, "Message Template" message will be sent to the Direktt Admin.
 - **Out of Office Auto Responder**:
     - **Off** - There won't be Automated Messages (this does not affect Welcome messages).
     - **Only During Non-working hours**:
@@ -57,7 +57,7 @@ https://github.com/direktt/direktt-auto-greet/wiki
         - Example - Out of Office Auto Responder is set to **During non-working hours**. Subscriber sends a message on Sunday. Sunday is configured as closed. **"Non-working hours mode message template"** message will be sent to user.  
         - Example - Out of Office Auto Responder is set to **During non-working hours**. Subscriber sends a message at 2:00 PM on Monday. Working hours for Monday are 9:00 AM - 5:00 PM. No message will be sent to user.  
     - **Always on**:
-        - Example - You go on holiday and set Out of Office Auto Responder mode to **Always On**. Subscriber sends a message to you, and gets the automated **"Always on mode message template"** message.
+        - Example - You go on holiday and set Out of Office Auto Responder mode to **Always on**. Subscriber sends a message to you, and gets the automated **"Always on mode message template"** message.
 
 ### Admin Shortcode (Front End)
 

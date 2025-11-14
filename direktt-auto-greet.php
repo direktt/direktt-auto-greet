@@ -233,7 +233,7 @@ function direktt_auto_greet_render_welcome_settings() {
 					<th scope="row"><label for="direktt_welcome_user"><?php echo esc_html__( 'Enable', 'direktt-auto-greet' ); ?></label></th>
 					<td>
 						<input type="checkbox" name="direktt_welcome_user" id="direktt_welcome_user" value="yes" <?php checked( $welcome_user ); ?> />
-						<label for="direktt_welcome_user" class="description"><?php echo esc_html__( 'When enabled, a welcome message is automatically sent to new subscriber after each subscription.', 'direktt-auto-greet' ); ?></label>
+						<label for="direktt_welcome_user"><span class="description"><?php echo esc_html__( 'When enabled, a welcome message is automatically sent to new subscriber after each subscription.', 'direktt-auto-greet' ); ?></span></label>
 					</td>
 				</tr>
 				<tr id="direktt-auto-greet-settings-mt-new-subscriber-row">
@@ -258,7 +258,7 @@ function direktt_auto_greet_render_welcome_settings() {
 					<th scope="row"><label for="direktt_welcome_admin"><?php echo esc_html__( 'Enable', 'direktt-auto-greet' ); ?></label></th>
 					<td>
 						<input type="checkbox" name="direktt_welcome_admin" id="direktt_welcome_admin" value="yes" <?php checked( $welcome_admin ); ?> />
-						<label for="direktt_welcome_admin" class="description"><?php echo esc_html__( 'When enabled, a message is automatically sent to admin after each new subscription.', 'direktt-auto-greet' ); ?></label>
+						<label for="direktt_welcome_admin"><span class="description"><?php echo esc_html__( 'When enabled, a message is automatically sent to admin after each new subscription.', 'direktt-auto-greet' ); ?></span></label>
 					</td>
 				</tr>
 				<tr id="direktt-auto-greet-settings-mt-admin-row">
