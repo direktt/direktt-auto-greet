@@ -90,7 +90,7 @@ GPL-2.0-or-later
 ## Support
 
 Please use Issues section of this repository for any issue you might have:  
-https://github.com/direktt/direktt-auto-greet/issues.  
+https://github.com/direktt/direktt-auto-greet/issues.
 
 Join Direktt Community on Discord - [Direktt Discord Server](https://discord.gg/xaFWtbpkWp)  
 
