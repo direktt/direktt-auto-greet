@@ -41,9 +41,8 @@ https://github.com/direktt/direktt-auto-greet/wiki
     - Do you want to send a notification to Direktt Admin when new user subscribes.
     - Choose the message template which will be sent to Direktt Admin when new user subscribes.
     - Set up Out of Office Auto Responder mode (Off / Only During Non-working hours / Always on)
-    - Set up your working hours.
-    - Choose the message template which will be sent to user for Auto Reponder Always on mode.
-    - Choose the message template which will be sent to user for Auto Reponder Non-working hours mode.
+    - If Always on mode is selected, choose the message template which will be sent to user for Auto Reponder.
+    - If Non-working hours mode is selected, choose the message template which will be sent to user for Auto Reponder and configure working hours.
 
 ### Workflow
 
