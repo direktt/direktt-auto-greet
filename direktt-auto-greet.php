@@ -218,7 +218,7 @@ function direktt_auto_greet_render_welcome_settings() {
 	?>
 	<div class="wrap">
 		<?php if ( $success ) : ?>
-			<div class="notice notice-success">
+			<div class="updated notice is-dismissible">
 				<p><?php echo esc_html__( 'Settings saved successfully.', 'direktt-auto-greet' ); ?></p>
 			</div>
 		<?php endif; ?>
