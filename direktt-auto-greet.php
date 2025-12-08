@@ -462,6 +462,13 @@ function direktt_auto_greet_out_of_office_auto_responder_shortcode() {
 	if ( isset( $_GET['success_flag'] ) && $_GET['success_flag'] === '1' ) {
 		echo '<div class="notice"><p>' . esc_html__( 'Settings saved successfully.', 'direktt-auto-greet' ) . '</p></div>';
 	}
+
+	add_action( 'wp_enqueue_scripts', function() {
+		if ( ! wp_script_is( 'jquery' ) ) {
+			wp_enqueue_script( 'jquery' );
+		}
+	});
+	
 	?>
 	<form method="post" action="">
 		<?php wp_nonce_field( 'direktt_auto_greet_save', 'direktt_auto_greet_nonce' ); ?>
@@ -474,7 +481,18 @@ function direktt_auto_greet_out_of_office_auto_responder_shortcode() {
 				<option value="off" <?php selected( $ooo_mode, 'off' ); ?>><?php echo esc_html__( 'Off', 'direktt-auto-greet' ); ?></option>
 			</select>
 		</p>
-		<button type="submit" name="save" class="direktt-button button-primary button-large"><?php echo esc_html__( 'Save Settings', 'direktt-auto-greet' ); ?></button>
+		<?php
+		$allowed_html = wp_kses_allowed_html( 'post' );
+		echo wp_kses( Direktt_Public::direktt_render_loader( __( 'Don\'t refresh the page', 'direktt-loyalty-program' ) ), $allowed_html );
+		?>
+		<script>
+			jQuery( document ).ready( function($) {
+				$( '#direktt-auto-greet-save' ).off( 'click' ).on( 'click', function() {
+					$( '.direktt-loader-overlay' ).fadeIn();
+				});
+			});
+		</script>
+		<button type="submit" name="save" class="direktt-button button-primary button-large" id="direktt-auto-greet-save"><?php echo esc_html__( 'Save Settings', 'direktt-auto-greet' ); ?></button>
 	</form>
 	<?php
 	echo '</div>';
