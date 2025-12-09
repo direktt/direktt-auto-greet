@@ -43,15 +43,15 @@ function direktt_auto_greet_activation_check() {
 		|| ( is_multisite() && is_plugin_active_for_network( $required_plugin ) );
 
 	if ( ! $is_required_active ) {
-		// Deactivate this plugin
+		// Deactivate this plugin.
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 
-		// Prevent the “Plugin activated.” notice
+		// Prevent the “Plugin activated.” notice.
 		if ( isset( $_GET['activate'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Justification: not a form processing, just removing a query var.
 			unset( $_GET['activate'] );
 		}
 
-		// Show an error notice for this request
+		// Show an error notice for this request.
 		add_action(
 			'admin_notices',
 			function () {
@@ -61,7 +61,7 @@ function direktt_auto_greet_activation_check() {
 			}
 		);
 
-		// Optionally also show the inline row message in the plugins list
+		// Optionally also show the inline row message in the plugins list.
 		add_action(
 			'after_plugin_row_direktt-auto-greet/direktt-auto-greet.php',
 			function () {
@@ -91,15 +91,15 @@ function direktt_auto_greet_setup_settings_pages() {
 }
 
 function direktt_auto_greet_render_welcome_settings() {
-	// Success message flag
+	// Success message flag.
 	$success = false;
 
-	// Handle form submission
+	// Handle form submission.
 	if (
 		isset( $_SERVER['REQUEST_METHOD'] ) && $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['direktt_admin_welcome_nonce'] )
 		&& wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['direktt_admin_welcome_nonce'] ) ), 'direktt_admin_welcome_save' )
 	) {
-		// Sanitize and update options
+		// Sanitize and update options.
 		update_option( 'direktt_welcome_user', isset( $_POST['direktt_welcome_user'] ) ? 'yes' : 'no' );
 		update_option( 'direktt_welcome_user_template', isset( $_POST['direktt_welcome_user_template'] ) ? intval( $_POST['direktt_welcome_user_template'] ) : 0 );
 		update_option( 'direktt_welcome_admin', isset( $_POST['direktt_welcome_admin'] ) ? 'yes' : 'no' );
@@ -150,7 +150,7 @@ function direktt_auto_greet_render_welcome_settings() {
 		$success = true;
 	}
 
-	// Load stored values
+	// Load stored values.
 	$welcome_user             = get_option( 'direktt_welcome_user', 'no' ) === 'yes';
 	$welcome_user_template    = intval( get_option( 'direktt_welcome_user_template', 0 ) );
 	$welcome_admin            = get_option( 'direktt_welcome_admin', 'no' ) === 'yes';
@@ -199,7 +199,7 @@ function direktt_auto_greet_render_welcome_settings() {
 		)
 	);
 
-	// Query for template posts
+	// Query for template posts.
 	$template_args  = array(
 		'post_type'      => 'direkttmtemplates',
 		'post_status'    => 'publish',
@@ -306,7 +306,7 @@ function direktt_auto_greet_render_welcome_settings() {
 								</option>
 							<?php endforeach; ?>
 						</select>
-                        <p class="description"><?php echo esc_html__( 'When a Direktt User sends you a message, they will receive this automated response.', 'direktt-auto-greet' ); ?></p>
+						<p class="description"><?php echo esc_html__( 'When a Direktt User sends you a message, they will receive this automated response.', 'direktt-auto-greet' ); ?></p>
 					</td>
 				</tr>
 				<tr id="direktt-auto-greet-settings-mt-nwh-row">
@@ -320,7 +320,7 @@ function direktt_auto_greet_render_welcome_settings() {
 								</option>
 							<?php endforeach; ?>
 						</select>
-                        <p class="description"><?php echo esc_html__( 'When a Direktt User sends you a message during non-working hours, they will receive this automated response.', 'direktt-auto-greet' ); ?></p>
+						<p class="description"><?php echo esc_html__( 'When a Direktt User sends you a message during non-working hours, they will receive this automated response.', 'direktt-auto-greet' ); ?></p>
 					</td>
 				</tr>
 				<tr id="direktt-auto-greet-settings-wh-row">
@@ -355,7 +355,7 @@ add_action( 'direktt/user/subscribe', 'direktt_auto_greet_on_direktt_subscribe_u
 function direktt_auto_greet_on_direktt_subscribe_user( $direktt_user_id ) {
 	$user_obj = Direktt_User::get_user_by_subscription_id( $direktt_user_id );
 
-	$user_title = get_the_title( $user_obj['ID'] );
+	$user_title = $user_obj['direktt_display_name'];
 
 	$welcome_user           = get_option( 'direktt_welcome_user', 'no' ) === 'yes';
 	$welcome_user_template  = intval( get_option( 'direktt_welcome_user_template', 0 ) );
@@ -410,7 +410,7 @@ function direktt_auto_greet_out_off_office_message_sent( $event ) {
 
 	if ( $ooo_mode === 'non-working-hours' ) {
 		$current_time = current_time( 'H:i' );
-		$current_day  = strtolower( gmdate( 'l', current_time( 'timestamp' ) ) );
+		$current_day = strtolower( wp_date( 'l' ) );
 
 		$is_non_working_time = false;
 
@@ -438,7 +438,7 @@ function direktt_auto_greet_out_of_office_auto_responder_shortcode() {
 		return;
 	}
 
-	// Load stored values
+	// Load stored values.
 	$ooo_mode = get_option( 'direktt_auto_greet_mode', 'off' );
 
 	if ( isset( $_SERVER['REQUEST_METHOD'] ) && $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['direktt_auto_greet_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['direktt_auto_greet_nonce'] ) ), 'direktt_auto_greet_save' ) ) {
@@ -463,12 +463,15 @@ function direktt_auto_greet_out_of_office_auto_responder_shortcode() {
 		echo '<div class="notice"><p>' . esc_html__( 'Settings saved successfully.', 'direktt-auto-greet' ) . '</p></div>';
 	}
 
-	add_action( 'wp_enqueue_scripts', function() {
-		if ( ! wp_script_is( 'jquery' ) ) {
-			wp_enqueue_script( 'jquery' );
+	add_action(
+		'wp_enqueue_scripts',
+		function () {
+			if ( ! wp_script_is( 'jquery' ) ) {
+				wp_enqueue_script( 'jquery' );
+			}
 		}
-	});
-	
+	);
+
 	?>
 	<form method="post" action="">
 		<?php wp_nonce_field( 'direktt_auto_greet_save', 'direktt_auto_greet_nonce' ); ?>
