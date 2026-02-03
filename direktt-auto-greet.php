@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Direktt Auto Greet - Welcome + Out of Office Automated Messages
  * Description: Direktt Auto Greet - Welcome + Out of Office Automated Messages
- * Version: 1.0.1
+ * Version: 1.0.0
  * Author: Direktt
  * Author URI: https://direktt.com/
  * License: GPL2
